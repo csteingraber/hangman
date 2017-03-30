@@ -3,6 +3,9 @@
 # to print the hangman to the terminal and respond 
 # to a player's guess appropriately.
 class Computer
+
+  attr_reader :round_finished, :guessed
+
   def initialize
     @word = choose_word
     @incorrect_letters = []
@@ -12,8 +15,8 @@ class Computer
     ]
     @progress = ""
     @word.each_char { @progress << "_ " }
-    puts "My word is: #{@word}"
-    puts ""
+    @round_finished = false
+    @guessed = false
   end
 
   # Reads in the 5desk.txt file and returns a random
@@ -30,13 +33,18 @@ class Computer
   def respond_to_guess(letter)
     letter = letter.clone.downcase
 
-    if @incorrect_letters.include?(letter)
+    if @incorrect_letters.include?(letter) || @progress.include?(letter) || @progress.include?(letter.upcase)
       puts "You already guessed that letter!"
       puts ""
     elsif @word.include?(letter) || @word.include?(letter.upcase)
       update_progress(letter)
+      unless @progress.include?("_")
+        @round_finished = true
+        @guessed = true
+      end
     else
       @incorrect_letters << letter
+      @round_finished = true if @incorrect_letters.size == 6
     end
     print_hangman
   end
@@ -47,6 +55,8 @@ class Computer
   # incorrect letters guessed, and the current state
   # of the guessed word.
   def print_hangman
+    puts "------------------------------------------------"
+    puts ""
     hangman_partial = @incorrect_letters.size - 1
     puts "#{@hangman[hangman_partial]}" if hangman_partial >= 0
     puts ""

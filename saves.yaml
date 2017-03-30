@@ -1,0 +1,27 @@
+--- !ruby/object:Computer
+word: asphodel
+incorrect_letters:
+- q
+- x
+hangman:
+- "  O"
+- |2-
+    O
+    |
+- |2-
+    O
+   /|
+- |2-
+    O
+   /|\
+- |2-
+    O
+   /|\
+   /
+- |2-
+    O
+   /|\
+   / \
+progress: 'a s _ _ _ _ _ _ '
+round_finished: false
+guessed: false

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Hangman - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">Object
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-load">#load</a>
+    
+    <li ><a href="#method-i-save">#save</a>
+    
+    <li ><a href="#method-i-start">#start</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Hangman">
+  <h1 id="class-Hangman" class="class">
+    class Hangman
+  </h1>
+
+  <section class="description">
+    
+<p>This class acts as a container for the <a href="Computer.html">Computer</a>
+and <a href="Player.html">Player</a> class and  mediates gameplay between
+the two. This class also implements the save  and load functionality.</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creates a new <a href="Computer.html">Computer</a> and <a
+href="Player.html">Player</a> Object and starts the game between the two.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File hangman.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>
+  <span class="ruby-ivar">@computer</span> = <span class="ruby-constant">Computer</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@player</span> = <span class="ruby-constant">Player</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">start</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-load" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">load</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>This asks the user if they want to load a previous game and loads in the
+old values of @computer from  the <a href="saves_yaml.html">saves.yaml</a>
+file.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="load-source">
+            <pre><span class="ruby-comment"># File hangman.rb, line 60</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">load</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Would you like to load your previous game? (y/n)&quot;</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-identifier">response</span> = <span class="ruby-identifier">gets</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">downcase</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">response</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;y&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-string">&quot;saves.yaml&quot;</span>)
+    <span class="ruby-identifier">save</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-string">&quot;saves.yaml&quot;</span>)
+    <span class="ruby-ivar">@computer</span> = <span class="ruby-constant">YAML</span><span class="ruby-operator">::</span><span class="ruby-identifier">load</span>(<span class="ruby-identifier">save</span>)
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Your game has been loaded!&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;New game created!&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-save" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">save</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>This asks the user if they want to save the game and will write the
+contents of @computer to YAML.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="save-source">
+            <pre><span class="ruby-comment"># File hangman.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">save</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Would you like to save your progress? (y/n)&quot;</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-identifier">response</span> = <span class="ruby-identifier">gets</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">downcase</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">response</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;y&quot;</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">&quot;saves.yaml&quot;</span>, <span class="ruby-string">&quot;w&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">file</span>.<span class="ruby-identifier">puts</span> <span class="ruby-constant">YAML</span><span class="ruby-operator">::</span><span class="ruby-identifier">dump</span>(<span class="ruby-ivar">@computer</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Your game has been saved!&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Lets just keep playing then!&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-start" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">start</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Starts a loop of player prompting and computer responses until the word is
+guessed or the hangman is drawn.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="start-source">
+            <pre><span class="ruby-comment"># File hangman.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">start</span>
+  <span class="ruby-identifier">load</span>
+  <span class="ruby-keyword">until</span> <span class="ruby-ivar">@computer</span>.<span class="ruby-identifier">round_finished</span>
+    <span class="ruby-identifier">save</span>
+    <span class="ruby-ivar">@computer</span>.<span class="ruby-identifier">respond_to_guess</span>(<span class="ruby-ivar">@player</span>.<span class="ruby-identifier">prompt</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@computer</span>.<span class="ruby-identifier">guessed</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;You won!&quot;</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;You lost!&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
